@@ -29,13 +29,15 @@ class SendTweetRequest extends FormRequest
                 'max:15',
                 'regex:/(^[a-zA-Z0-9@]*$)/u',
                 function ($attribute, $value, $fail) {
-                    // Check target hasn't received a tweet today
-                    $target = Tweet::whereDate('created_at', Carbon::today())
-                        ->where('to', '=', $value)
-                        ->get();
+                    if ($target !== 'developerdoran') {
+                        // Check target hasn't received a tweet today
+                        $target = Tweet::whereDate('created_at', Carbon::today())
+                            ->where('to', '=', $value)
+                            ->get();
 
-                    if (! $target->isEmpty()) {
-                        $fail("That twitter user has already received a tweet today.");
+                        if (! $target->isEmpty()) {
+                            $fail("That twitter user has already received a tweet today.");
+                        }
                     }
                 }
             ],
