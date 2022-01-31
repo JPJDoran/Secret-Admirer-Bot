@@ -28,7 +28,7 @@ class SendTweet implements ShouldQueue
         $this->consumerKeySecret = env("TWITTER_CONSUMER_SECRET");
         $this->accessKey = env("TWITTER_ACCESS_TOKEN");
         $this->accessKeySecret = env("TWITTER_ACCESS_TOKEN_SECRET");
-        // $this->connection = $this->createConnection();
+        $this->connection = $this->createConnection();
         $this->limiter = $this->limiter();
         $this->throttleKey = 'send-tweet';
     }
@@ -99,10 +99,6 @@ class SendTweet implements ShouldQueue
 
     private function sendTweetOverApi(Tweet $tweet): bool
     {
-        if (env("DEBUG_MODE")) {
-            return true;
-        }
-
         $response = $this->connection->post("statuses/update", ['status' => 'testing']);
 
         if (! isset($response->errors)) {

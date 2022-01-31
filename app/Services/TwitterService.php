@@ -73,7 +73,7 @@ class TwitterService
         $to = $tweetDetails['to'];
         $from = $tweetDetails['from'];
         $message = $messages->random()['message'];
-        $emoji = $messages->random();
+        $emoji = $emojis->random();
 
         return "$to $message $from $emoji";
     }
