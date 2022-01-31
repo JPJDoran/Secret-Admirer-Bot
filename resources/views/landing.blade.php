@@ -74,7 +74,7 @@
                                         class="form-control"
                                         placeholder="@developerdoran"
                                         v-model="recipient"
-                                        pattern="[A-Za-z0-9@]{4,15}"
+                                        pattern="[A-Za-z0-9@_]{4,15}"
                                         required
                                         autofocus
                                         oninvalid="this.setCustomValidity('Twitter handles are alphanumeric between 4-15 characters long.')"
@@ -104,6 +104,7 @@
                                         <option value="From ???">From ???</option>
                                         <option value="From Anon...">From Anon</option>
                                         <option value="From Anonymous...">From Anonymous</option>
+                                        <option value="From A Friend...">From A Friend</option>
                                     </select>
                                 </div>
 

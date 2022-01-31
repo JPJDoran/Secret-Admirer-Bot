@@ -27,7 +27,7 @@ class SendTweetRequest extends FormRequest
                 'required',
                 'min:4',
                 'max:15',
-                'regex:/(^[a-zA-Z0-9@]*$)/u',
+                'regex:/(^[a-zA-Z0-9@_]*$)/u',
                 function ($attribute, $value, $fail) {
                     if ($value !== '@developerdoran') {
                         // Check target hasn't received a tweet today
@@ -50,6 +50,7 @@ class SendTweetRequest extends FormRequest
                         'From ???',
                         'From Anon...',
                         'From Anonymous...',
+                        'From A Friend...',
                     ];
 
                     if (! in_array($value, $signatures)) {

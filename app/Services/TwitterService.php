@@ -86,8 +86,9 @@ class TwitterService
      */
     private function calculateCharCount(array $tweetDetails): int
     {
-        // One space after the recipient and another after the message
-        $spaces = 2;
+        // One space after the recipient, another after the message and the last
+        // after the signature
+        $spaces = 3;
 
         // Pretty sure emojis are only 2 characters but use 5 as a buffer
         $emoji = 5;
