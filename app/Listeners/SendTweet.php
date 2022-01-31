@@ -99,7 +99,7 @@ class SendTweet implements ShouldQueue
 
     private function sendTweetOverApi(Tweet $tweet): bool
     {
-        $response = $this->connection->post("statuses/update", ['status' => 'testing']);
+        $response = $this->connection->post("statuses/update", ['status' => $tweet->message]);
 
         if (! isset($response->errors)) {
             return true;
