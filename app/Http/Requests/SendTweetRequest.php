@@ -29,7 +29,7 @@ class SendTweetRequest extends FormRequest
                 'max:15',
                 'regex:/(^[a-zA-Z0-9@]*$)/u',
                 function ($attribute, $value, $fail) {
-                    if ($target !== 'developerdoran') {
+                    if ($value !== 'developerdoran') {
                         // Check target hasn't received a tweet today
                         $target = Tweet::whereDate('created_at', Carbon::today())
                             ->where('to', '=', $value)
