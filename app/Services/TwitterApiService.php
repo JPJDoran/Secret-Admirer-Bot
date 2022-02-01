@@ -61,7 +61,7 @@ class TwitterApiService
         }
 
         $connection = $this->createConnection();
-        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => 'http://127.0.0.1/oAuth'));
+        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => 'https://www.secretadmirerbot.com/oAuth'));
 
         Session::put('oauth_token', $request_token['oauth_token']);
         Session::put('oauth_token_secret', $request_token['oauth_token_secret']);
