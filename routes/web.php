@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BotController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Landing page
 Route::get('/', [BotController::class, 'landingPage']);
-Route::post('/oAuth', [BotController::class, 'twitterOAuth']);
+
+// Post a tweet
+Route::post('/tweet', [BotController::class, 'sendTweet']);
+
+// Twitter OAuth callback route
+Route::get('/oAuth', [BotController::class, 'twitterOAuth']);
+
+// Destroy session effectively logging out the twitter user
+Route::get('/logout', function () {
+    Session::flush();
+
+    return redirect('/');
+});

@@ -171,8 +171,8 @@ return [
             "charCount" => 52,
         ],
         [
-            "message" => "You deserve the purest form of love everyday You have a heart full of love and empathy.",
-            "charCount" => 87,
+            "message" => "You deserve the purest form of love everyday. You have a heart full of love and empathy.",
+            "charCount" => 88,
         ],
         [
             "message" => "Every day is a great day for me to celebrate our friendship and the love we share. May this beautiful journey of my friendship with you never end.",

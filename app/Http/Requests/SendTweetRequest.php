@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Request;
 
 class SendTweetRequest extends FormRequest
 {
@@ -29,14 +30,14 @@ class SendTweetRequest extends FormRequest
                 'max:15',
                 'regex:/(^[a-zA-Z0-9@_]*$)/u',
                 function ($attribute, $value, $fail) {
-                    if ($value !== '@developerdoran') {
+                    if (strtolower($value) !== '@developerdoran') {
                         // Check target hasn't received a tweet today
                         $target = Tweet::whereDate('created_at', Carbon::today())
                             ->where('to', '=', $value)
                             ->get();
 
                         if (! $target->isEmpty()) {
-                            $fail("That twitter user has already received a tweet today.");
+                            return $fail("That twitter user has already received a tweet today.");
                         }
                     }
                 }
@@ -44,17 +45,25 @@ class SendTweetRequest extends FormRequest
             'from' => [
                 'required',
                 function ($attribute, $value, $fail) {
-                    // Check target hasn't received a tweet today
-                    $signatures = [
-                        'From An Admirer...',
-                        'From ???',
-                        'From Anon...',
-                        'From Anonymous...',
-                        'From A Friend...',
-                    ];
+                    if ($value !== "Twitter User") {
+                        // Check signature is supported
+                        $signatures = [
+                            'From An Admirer...',
+                            'From ???',
+                            'From Anon...',
+                            'From Anonymous...',
+                            'From A Friend...',
+                        ];
 
-                    if (! in_array($value, $signatures)) {
-                        $fail("The chosen signature is not supported.");
+                        if (! in_array($value, $signatures)) {
+                            return $fail("The chosen signature is not supported.");
+                        }
+
+                        return;
+                    }
+
+                    if (null === session('twitter_user')) {
+                        return $fail("The chosen signature is not supported.");
                     }
                 }
             ],
@@ -65,7 +74,7 @@ class SendTweetRequest extends FormRequest
                     $messageRepository = new MessageRepository;
 
                     if (! in_array($value, $messageRepository->getAllCategories())) {
-                        $fail("The chosen message theme isn't supported.");
+                        return $fail("The chosen message theme isn't supported.");
                     }
                 }
             ],

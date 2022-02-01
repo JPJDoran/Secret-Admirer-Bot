@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
-use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Events\PostTweet;
 use App\Models\Tweet;
+use App\Services\TwitterApiService;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,35 +17,20 @@ class SendTweet implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /** @var \App\Services\TwitterService $twitterService */
+    protected $twitterApiService;
+
     /**
      * Create the event listener.
      *
+     * @param \App\Services\TwitterApiService $twitterApiService
      * @return void
      */
-    public function __construct()
+    public function __construct(TwitterApiService $twitterApiService)
     {
-        $this->consumerKey = env("TWITTER_CONSUMER_KEY");
-        $this->consumerKeySecret = env("TWITTER_CONSUMER_SECRET");
-        $this->accessKey = env("TWITTER_ACCESS_TOKEN");
-        $this->accessKeySecret = env("TWITTER_ACCESS_TOKEN_SECRET");
-        $this->connection = $this->createConnection();
+        $this->twitterApiService = $twitterApiService;
         $this->limiter = $this->limiter();
         $this->throttleKey = 'send-tweet';
-    }
-
-    /**
-     * Creates a new twitter api connection
-     *
-     * @return \Abraham\TwitterOAuth\TwitterOAuth
-     */
-    private function createConnection()
-    {
-        return new TwitterOAuth(
-            $this->consumerKey,
-            $this->consumerKeySecret,
-            $this->accessKey,
-            $this->accessKeySecret
-        );
     }
 
     /**
@@ -54,7 +39,7 @@ class SendTweet implements ShouldQueue
      * @param  \App\Events\PostTweet  $event
      * @return void
      */
-    public function handle(PostTweet $event)
+    public function handle(PostTweet $event): void
     {
         // Event retry count not initiated so default it
         if (! isset($event->retries)) {
@@ -67,7 +52,7 @@ class SendTweet implements ShouldQueue
             $this->throttleKey,
             1,
             function() use ($event) {
-                if (! $response = $this->sendTweetOverApi($event->tweet)) {
+                if (! $response = $this->twitterApiService->sendTweetOverApi($event->tweet)) {
                     return false;
                 }
 
@@ -85,6 +70,8 @@ class SendTweet implements ShouldQueue
 
             event($event);
         }
+
+        return;
     }
 
     /**
@@ -97,25 +84,8 @@ class SendTweet implements ShouldQueue
         return app(RateLimiter::class);
     }
 
-    private function sendTweetOverApi(Tweet $tweet): bool
-    {
-        $response = $this->connection->post("statuses/update", ['status' => $tweet->message]);
-
-        if (! isset($response->errors)) {
-            return true;
-        }
-
-        if (empty($response->errors)) {
-            return true;
-        }
-
-        /** @todo log the $response->errors */
-
-        return false;
-    }
-
     /**
-     *
+     * Update the tweet to show as published
      *
      * @param  Tweet $tweet
      * @return void
@@ -124,5 +94,7 @@ class SendTweet implements ShouldQueue
     {
         $tweet->sent = Carbon::now();
         $tweet->save();
+
+        return;
     }
 }

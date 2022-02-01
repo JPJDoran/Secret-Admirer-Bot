@@ -67,6 +67,20 @@
                                     <p>Your tweet will be sent to your recipient via <a href="https://twitter.com/YourAdmirerBot" target="_blank">@YourAdmirerBot</a>.</p>
                                 </div>
 
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="text-center">
+                                                {!! session('access_token') ? "Logged in as <span id='twitter-handle'>$twitterLogin</span>" : '<a href="'.$twitterLogin.'"><img src="/imgs/sign-in-with-twitter-link.png"></a>' !!}
+
+                                                @if (session('access_token'))
+                                                    (<a href="/logout">Logout</a>)
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-label-group">
                                     <input
                                         type="text"
@@ -91,7 +105,7 @@
                                         <option value="fancy">Crush</option>
                                         <option value="friendship">Friendship</option>
 
-                                        @if (date('M-d') === 'Feb-14'):
+                                        @if (date('M-d') === 'Feb-14')
                                             <option value="valentines">Valentines</option>
                                         @endif
                                     </select>
@@ -105,6 +119,10 @@
                                         <option value="From Anon...">From Anon</option>
                                         <option value="From Anonymous...">From Anonymous</option>
                                         <option value="From A Friend...">From A Friend</option>
+
+                                        @if (session('access_token'))
+                                            <option value="Twitter User">From {{ $twitterLogin }}</option>
+                                        @endif
                                     </select>
                                 </div>
 
@@ -177,31 +195,35 @@
 
                         if (recipient !== "") {
                             recipient = `@${recipient}`;
-                        } else {
-                            recipient = this.sanitizeString(recipient);
                         }
+
+                        recipient = this.sanitizeString(recipient);
 
                         let message = this.themeMessage;
 
                         if (message == null) {
                             message = "";
-                        } else {
-                            message = this.sanitizeString(message);
                         }
+
+                        message = this.sanitizeString(message);
 
                         let signature = this.signature;
 
                         if (signature == null) {
                             signature = "";
-                        } else {
-                            signature = this.sanitizeString(signature);
                         }
+
+                        if (signature === "Twitter User") {
+                            signature = document.getElementById("twitter-handle").innerHTML;
+                        }
+
+                        signature = this.sanitizeString(signature);
 
                         if (recipient === "" || signature === "" || message === "") {
                             return "Start filling out the form to generate your preview..."
                         }
 
-                        return `${recipient} ${message} ${this.signature} ${this.getEmoji()}`;
+                        return `@${recipient} ${message} @${signature} ${this.getEmoji()}`;
                     },
                     themeMessage: function() {
                         return this.messages[this.theme];
@@ -246,9 +268,12 @@
                         this.displayResult(bgClass);
                     },
                     async postTweet() {
-                        const response = await fetch('/api/tweet', {
+                        const response = await fetch('/tweet', {
                             method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                             },
                             body: JSON.stringify({
                                 to: `@${this.recipient.replace('@', '')}`,
                                 from: this.signature,

@@ -5,10 +5,12 @@ namespace App\Services;
 use App\Events\PostTweet;
 use App\Models\Tweet;
 use App\Repositories\MessageRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use strlen;
 
 /**
- * Handles the controller logic to send tweets
+ * Handles the logic to generate tweets and dispatch publish events
  */
 class TwitterService
 {
@@ -21,7 +23,6 @@ class TwitterService
     public function __construct(MessageRepository $messageRepository)
     {
         $this->maxCharCount = 260; // A buffer for the actual limit of 280
-
         $this->messageRepository = $messageRepository;
     }
 
