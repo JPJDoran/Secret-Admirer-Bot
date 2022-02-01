@@ -119,8 +119,6 @@ var vue = new Vue({
 
             if (signature === "Twitter User") {
                 signature = "@"+this.sanitizeString(document.getElementById("twitter-handle").innerHTML);
-            } else {
-                signature = this.sanitizeString(signature);
             }
 
             if (recipient === "" || signature === "" || message === "") {
