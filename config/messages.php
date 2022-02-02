@@ -47,6 +47,66 @@ return [
             "message" => "I will only adore you twice in my lifetime. That's now and forever.",
             "charCount" => 67,
         ],
+        [
+            "message" => "Before I met you, my mind was overwhelmed with everything. But now, it's impossible to think of anything but you.",
+            "charCount" => 113,
+        ],
+        [
+            "message" => "I absolutely adore you. Just FYI.",
+            "charCount" => 33,
+        ],
+        [
+            "message" => "You're one of a kind and each and every day I'm glad that I have a beautiful and amazing person like you in my life.",
+            "charCount" => 116,
+        ],
+        [
+            "message" => "I can't envisage how my life would have turned out without you. Your love is my motivation and you are my inspiration.",
+            "charCount" => 118,
+        ],
+        [
+            "message" => "Even the littlest moments with you are monumental to me.",
+            "charCount" => 56,
+        ],
+        [
+            "message" => "In a sea of people, my eyes always search for you.",
+            "charCount" => 50,
+        ],
+        [
+            "message" => "I would rather share one lifetime with you than face all the ages of this world alone.",
+            "charCount" => 86,
+        ],
+        [
+            "message" => "Whether they're good or bad, I look forward to each and every day knowing it's another one spent with you.",
+            "charCount" => 106,
+        ],
+        [
+            "message" => "You're irreplaceable, non-returnable, and priceless to me. Never change.",
+            "charCount" => 72,
+        ],
+        [
+            "message" => "The sound of your voice brightens my day.",
+            "charCount" => 41,
+        ],
+        [
+            "message" => "If someone asked me to describe you in just two words, I'd say 'Simply Amazing.'",
+            "charCount" => 80,
+        ],
+        [
+            "message" => "I could watch you for a single minute and find a thousand things that I love about you.",
+            "charCount" => 87,
+        ],
+        [
+            "message" => "Together with you is my favorite place to be.",
+            "charCount" => 45,
+        ],
+        [
+            "message" => "You make my heart soar, my mind race, and my lips form a perfect smile.",
+            "charCount" => 45,
+        ],
+        [
+            "message" => "Dreaming of you keeps me asleep. Being with you keeps me alive.",
+            "charCount" => 63,
+        ],
     ],
 
     // crush
@@ -91,6 +151,50 @@ return [
             "message" => "I never thought I would find someone who makes me feel the way you do.",
             "charCount" => 70,
         ],
+        [
+            "message" => "If I had a flower for every time I thought of you, I could walk in my garden forever.",
+            "charCount" => 85,
+        ],
+        [
+            "message" => "My heart came to life the moment you stepped into my life.",
+            "charCount" => 58,
+        ],
+        [
+            "message" => "In your smile I see something more beautiful than the stars.",
+            "charCount" => 60,
+        ],
+        [
+            "message" => "Nobody is perfect, but you're so close it's scary.",
+            "charCount" => 50,
+        ],
+        [
+            "message" => "Your smile is literally the cutest thing I've ever seen in my life.",
+            "charCount" => 67,
+        ],
+        [
+            "message" => "You are my favourite daydream.",
+            "charCount" => 30,
+        ],
+        [
+            "message" => "You are the longest passenger on my train of thought.",
+            "charCount" => 53,
+        ],
+        [
+            "message" => "I have a crush on your mind, I fell for your personality and your looks are just a big bonus.",
+            "charCount" => 93,
+        ],
+        [
+            "message" => "My heart skips a beat, and I miss a breath every time I see you.",
+            "charCount" => 64,
+        ],
+        [
+            "message" => "I look at you and can't help but smile.",
+            "charCount" => 39,
+        ],
+        [
+            "message" => "I want to be your favourite hello and your hardest goodbye.",
+            "charCount" => 59,
+        ],
     ],
 
     // respect & warm approval
@@ -118,6 +222,50 @@ return [
         [
             "message" => "I admire you not only with my heart but also with my mind. Your friendship is the fuel of my life.",
             "charCount" => 98,
+        ],
+        [
+            "message" => "Meeting you showed me what perfect is. You are the meaning of perfect.",
+            "charCount" => 70,
+        ],
+        [
+            "message" => "I admire you, I care for you, I love you, I respect you and I trust you. Unconditionally.",
+            "charCount" => 90,
+        ],
+        [
+            "message" => "It's not that I love you for allowing me to be me. I love you because you encourage it.",
+            "charCount" => 87,
+        ],
+        [
+            "message" => "You never cease to impress me.",
+            "charCount" => 30,
+        ],
+        [
+            "message" => "My life was black and white until you came in and added colour.",
+            "charCount" => 63,
+        ],
+        [
+            "message" => "You inspire a love in me that I never knew was possible.",
+            "charCount" => 56,
+        ],
+        [
+            "message" => "It is impossible to escape the impression you have left on me.",
+            "charCount" => 62,
+        ],
+        [
+            "message" => "You give me the kind of feelings people write novels about.",
+            "charCount" => 59,
+        ],
+        [
+            "message" => "I'll honour, respect, cherish and love you till the day I die.",
+            "charCount" => 62,
+        ],
+        [
+            "message" => "I'm never ever giving you up, I'm never ever leaving you. Instead, I'll forever and ever love and cherish you.",
+            "charCount" => 110,
+        ],
+        [
+            "message" => "You are the reason for all of my success. You are my inspiration and motivation.",
+            "charCount" => 80,
         ],
     ],
 
@@ -214,15 +362,15 @@ return [
             "charCount" => 66,
         ],
         [
-            "message" => "I fell in love with you because of all the small things you don’t even realize you’re doing. Happy Valentines Day!",
+            "message" => "I fell in love with you because of all the small things you don't even realize you're doing. Happy Valentines Day!",
             "charCount" => 114,
         ],
         [
-            "message" => "Happy Valentine’s Day! Are you seriously not sick of me yet?",
+            "message" => "Happy Valentine's Day! Are you seriously not sick of me yet?",
             "charCount" => 60,
         ],
         [
-            "message" => "I love you because you're the person who annoys me the least. Happy Valentine’s Day!",
+            "message" => "I love you because you're the person who annoys me the least. Happy Valentine's Day!",
             "charCount" => 62,
         ],
         [
@@ -245,10 +393,65 @@ return [
             "message" => "I choo-choo-choose you! Happy Valentines!🚂",
             "charCount" => 45,
         ],
+        [
+            "message" => "There's no one else I'd rather lay in bed and look at my phone next to.",
+            "charCount" => 71,
+        ],
+        [
+            "message" => "You deserve the purest form of love any day, not just on valentine’s day.",
+            "charCount" => 73,
+        ],
+        [
+            "message" => "I want to celebrate this valentine’s day by celebrating the one I hold close to my heart. You!",
+            "charCount" => 94,
+        ],
+        [
+            "message" => "Without you, my life is unimaginable. I wish you all the love in the world this valentine's day.",
+            "charCount" => 96,
+        ],
+        [
+            "message" => "You are the only flower that will bloom forever in my heart. Happy Valentine’s Day.",
+            "charCount" => 83,
+        ],
+        [
+            "message" => "Nothing is more important and precious than you in my life. Happy Valentine’s Day.",
+            "charCount" => 82,
+        ],
+        [
+            "message" => "Nothing is more important and precious than you in my life. Happy Valentine’s Day.",
+            "charCount" => 82,
+        ],
+        [
+            "message" => "Valentine, whenever thoughts of you cross my mind my heart starts beating faster.",
+            "charCount" => 82,
+        ],
+        [
+            "message" => "If anything in the world is everlasting, it is my love for you. Happy Valentine’s day.",
+            "charCount" => 86,
+        ],
+        [
+            "message" => "My life is beautiful because you are in it. I hope you have a wonderful Valentine’s day.",
+            "charCount" => 88,
+        ],
+        [
+            "message" => "Happy Valentine’s Day to the truest and most beautiful soul I know.",
+            "charCount" => 67,
+        ],
     ],
 
     "funny" => [
-
+        [
+            "message" => "You make me happier than getting the wordle.",
+            "charCount" => 44,
+        ],
+        [
+            "message" => "Words can't describe how beautiful you are... but numbers can 6/10.",
+            "charCount" => 67,
+        ],
+        [
+            "message" => "You're my lobster.",
+            "charCount" => 18,
+        ],
     ],
 
 ];
