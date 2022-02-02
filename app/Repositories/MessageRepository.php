@@ -29,7 +29,7 @@ class MessageRepository
     /**
      * Return a key value pair of the count of all messsages per category
      *
-     * @return array [description]
+     * @return array
      */
     public function getCountOfAllMessagesByCategory(): array
     {

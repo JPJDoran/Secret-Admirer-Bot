@@ -59,7 +59,7 @@ class TwitterService
      * @param  array  $tweetDetails
      * @return string|null
      */
-    private function generateTweet(array $tweetDetails): ?string
+    public function generateTweet(array $tweetDetails): ?string
     {
         $charLimit = $this->maxCharCount - $this->calculateCharCount($tweetDetails);
 
@@ -85,7 +85,7 @@ class TwitterService
      * @param  array $tweetDetails
      * @return int
      */
-    private function calculateCharCount(array $tweetDetails): int
+    public function calculateCharCount(array $tweetDetails): int
     {
         // One space after the recipient, another after the message and the last
         // after the signature
