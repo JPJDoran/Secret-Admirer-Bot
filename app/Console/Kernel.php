@@ -16,8 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->exec('php artisan queue:retry all')
-            ->everyThirtyMinutes()
-            ->withoutOverlapping();
+            ->everyThirtyMinutes();
     }
 
     /**
