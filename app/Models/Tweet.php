@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\TwitterErrorLog;
 use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
@@ -17,4 +18,12 @@ class Tweet extends Model
         'category',
         'message',
     ];
+
+    /**
+     * Get the errors for the tweet.
+     */
+    public function errors()
+    {
+        return $this->hasMany(TwitterErrorLog::class);
+    }
 }

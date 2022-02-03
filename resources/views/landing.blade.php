@@ -178,10 +178,9 @@
         <!-- Stick this to the bottom of the page? -->
         <footer class="my-5 py-3 text-muted text-center text-small">
             <p class="mb-1">&copy; {{ date("Y") }} Secret Admirer Bot</p>
-            <!-- <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-            </ul> -->
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy">Privacy Policy</a></li>
+            </ul>
         </footer>
 
         <!-- Scripts -->

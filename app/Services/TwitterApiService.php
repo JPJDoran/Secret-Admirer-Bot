@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Models\Tweet;
+use App\Models\TwitterErrorLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use strlen;
@@ -20,6 +21,7 @@ class TwitterApiService
         $this->consumerKeySecret = env("TWITTER_CONSUMER_SECRET");
         $this->accessKey = env("TWITTER_ACCESS_TOKEN");
         $this->accessKeySecret = env("TWITTER_ACCESS_TOKEN_SECRET");
+        $this->callbackUrl = env("APP_ENV") === "local" ? 'http://127.0.0.1/oAuth' : 'https://www.secretadmirerbot.com/oAuth';
     }
 
     /**
@@ -61,7 +63,7 @@ class TwitterApiService
         }
 
         $connection = $this->createConnection();
-        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => 'https://www.secretadmirerbot.com/oAuth'));
+        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => $this->callbackUrl));
 
         Session::put('oauth_token', $request_token['oauth_token']);
         Session::put('oauth_token_secret', $request_token['oauth_token_secret']);
@@ -90,7 +92,7 @@ class TwitterApiService
     /**
      * Handles the callback from twitter OAuth when logining in a user
      *
-     * @param Request $request [description]
+     * @param Request $request
      * @return void
      */
     public function handleOAuthCallback(Request $request): void
@@ -124,8 +126,31 @@ class TwitterApiService
             return true;
         }
 
-        /** @todo log the $response->errors */
+        $this->handleErrorResponse($tweet, $response->errors);
 
         return false;
+    }
+
+    /**
+     * Handle an error returned from the twitter api
+     *
+     * @param Tweet  $tweet
+     * @param array $errors
+     * @return void
+     */
+    protected function handleErrorResponse(Tweet $tweet, array $errors): void
+    {
+        $errorArray = [];
+
+        foreach ($errors as $error) {
+            array_push($errorArray, $error->message);
+        }
+
+        $errorLog = TwitterErrorLog::make([
+            'error' => json_encode($errorArray),
+        ]);
+
+        $errorLog->tweet_id = $tweet->id;
+        $errorLog->save();
     }
 }

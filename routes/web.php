@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Session;
 // Landing page
 Route::get('/', [BotController::class, 'landingPage']);
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 // Post a tweet
 Route::post('/tweet', [BotController::class, 'sendTweet']);
 
