@@ -3,6 +3,22 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="Tweet someone you know a random message of adoration, admiration or friendship anonymously or publicly!">
+        <meta name="keywords" content="Twitter secret admirer, twitter anonymous tweets, tweet anonymously, how to tweet anonymously, secret admirer bot">
+        <meta name="author" content="Jake Doran (@developerdoran)">
+
+        <meta property="og:title" content="Secret Admirer Bot">
+        <meta property="og:description" content="Tweet someone you know a random message of adoration, admiration or friendship anonymously or publicly!">
+        <meta property="og:image" content="https://images.unsplash.com/photo-1579208570378-8c970854bc23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1522&q=80">
+        <meta property="og:url" content="https://secretadmirerbot.com">
+
+        <meta name="twitter:title" content="Secret Admirer Bot">
+        <meta name="twitter:description" content="Tweet someone you know a random message of adoration, admiration or friendship anonymously or publicly!">
+        <meta name="twitter:image" content="https://images.unsplash.com/photo-1579208570378-8c970854bc23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1522&q=80">
+        <meta name="twitter:card" content="summary"></meta>
+        <meta name="twitter:site" content="@YourAdmirerBot" />
+        <meta name="twitter:creator" content="@DeveloperDoran" />
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
