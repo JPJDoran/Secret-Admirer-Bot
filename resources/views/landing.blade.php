@@ -104,7 +104,7 @@
                                         class="form-control"
                                         placeholder="@developerdoran"
                                         v-model="recipient"
-                                        pattern="[A-Za-z0-9@_]{4,15}"
+                                        pattern="[A-Za-z0-9@_]{3,16}"
                                         required
                                         autofocus
                                         oninvalid="this.setCustomValidity('Twitter handles are alphanumeric between 4-15 characters long.')"
