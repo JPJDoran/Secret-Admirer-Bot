@@ -27,7 +27,7 @@ class SendTweetRequest extends FormRequest
             'to' => [
                 'required',
                 'min:4',
-                'max:15',
+                'max:16',
                 'regex:/(^[a-zA-Z0-9@_]*$)/u',
                 function ($attribute, $value, $fail) {
                     if (strtolower($value) !== '@developerdoran') {
